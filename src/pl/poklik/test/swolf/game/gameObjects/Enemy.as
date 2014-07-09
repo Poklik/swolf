@@ -103,6 +103,13 @@ package pl.poklik.test.swolf.game.gameObjects
 			Starling.juggler.add(tween);
 		}
 		
+		override protected function remove():void
+		{
+			Starling.juggler.remove(tweenRotation);
+			Starling.juggler.remove(tweenFloating);
+			super.remove();
+		}
+		
 		/**
 		 * Private points setter, just in case someone would modify this parameter outside class.
 		 */

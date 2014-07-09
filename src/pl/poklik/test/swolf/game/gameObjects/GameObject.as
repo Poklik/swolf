@@ -74,6 +74,9 @@ package pl.poklik.test.swolf.game.gameObjects
 		{
 			if (callback!=null)
 				callback.removeObjectFromScene(this);
+				
+			if (image != null)
+				image.dispose();
 		}
 		
 		protected function moveParticles(newX:Number, newY:Number):void
