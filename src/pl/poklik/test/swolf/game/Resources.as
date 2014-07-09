@@ -1,6 +1,7 @@
 package pl.poklik.test.swolf.game 
 {
 	import flash.media.Sound;
+	import starling.text.BitmapFont;
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
 	/**
@@ -41,7 +42,13 @@ package pl.poklik.test.swolf.game
 		[Embed(source = "../../../../../../rsrc/shoot.mp3")]
 			public static const sfxShoot:Class;
 			public static const sndShoot:Sound = new sfxShoot() as Sound;
+			
+		[Embed(source="../../../../../../rsrc/deffont.fnt", mimeType="application/octet-stream")]
+			private static const xmlFont:Class;
+
+		public static const font:BitmapFont = new BitmapFont(atlas.getTexture("deffont"), XML(new xmlFont()));
 	
 	}
 
 }
+

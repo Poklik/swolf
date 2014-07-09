@@ -11,6 +11,8 @@ package pl.poklik.test.swolf.game
 	import pl.poklik.test.swolf.game.gameObjects.Player;
 	import pl.poklik.test.swolf.game.gameObjects.Water;
 	import pl.poklik.test.swolf.game.helper.IGameObjectCallback;
+	import starling.animation.Transitions;
+	import starling.animation.Tween;
 	import starling.core.Starling;
 	import starling.display.Image;
 	import starling.display.Sprite;
@@ -32,8 +34,11 @@ package pl.poklik.test.swolf.game
 		private const playerPosY:Number = 400;
 		private const spawningDelay:Number = 3000;
 		
+		private var scoreReal:int;
+		public var scoreDisplay:int;
+		private var scoreField:TextField;
+		
 		private var player:Player;
-		//private var layerMissile:Sprite;
 		
 		private var missiles:Vector.<Missile>;
 		private var water:Vector.<Water>;
@@ -43,6 +48,8 @@ package pl.poklik.test.swolf.game
 		
 		public function GameMain() 
 		{
+			TextField.registerBitmapFont(Resources.font);
+			
 			addChild(new TextField(ScreenInfo.width, ScreenInfo.height, ""));
 			addChild(new Image(Resources.texBackground));
 			
@@ -75,6 +82,12 @@ package pl.poklik.test.swolf.game
 			addChild(partc);
 			Starling.juggler.add(partc);
 			
+			scoreReal = 0;
+			scoreDisplay = 0;
+			scoreField = new TextField(ScreenInfo.width, 50, "Score: 0", "deffont", 30, 0xFFFFFF);
+			scoreField.batchable = true;
+			addChild(scoreField);
+			
 			/**
 			 * Enemy spawner
 			 */
@@ -97,6 +110,7 @@ package pl.poklik.test.swolf.game
 				{
 					if (col.checkCollision(msl))
 					{
+						addPoints(col.points);
 						col.destroy();
 						msl.destroy();
 					}
@@ -113,6 +127,8 @@ package pl.poklik.test.swolf.game
 			{
 				enm.tick(event.passedTime);
 			}
+			
+			scoreField.text = "Score: " + scoreDisplay;
 		}
 		
 		private function onTouchEvent(event:TouchEvent):void
@@ -207,6 +223,18 @@ package pl.poklik.test.swolf.game
 			{
 				trace("Error removing object \"" + obj + "\" from scene!");
 			}
+		}
+		
+		/**
+		 * Adds points to overall score.
+		 * @param	points	Points to add.
+		 */
+		public function addPoints(points:int):void
+		{
+			scoreReal += points;
+			var scoreTween:Tween = new Tween(this, 0.5, Transitions.EASE_IN);
+			scoreTween.animate("scoreDisplay", scoreReal);
+			Starling.juggler.add(scoreTween);
 		}
 		
 		/**

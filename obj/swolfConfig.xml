@@ -34,16 +34,16 @@
     <omit-trace-statements>true</omit-trace-statements>
     <verbose-stacktraces>false</verbose-stacktraces>
     <source-path append="true">
-      <path-element>D:\projekty\Starling\swolf\src</path-element>
+      <path-element>C:\Users\Acer\Documents\GitHub\swolf\src</path-element>
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>D:\projekty\Starling\swolf\lib\starling.swc</path-element>
-      <path-element>D:\projekty\Starling\swolf\lib\starlingparticleex.swc</path-element>
+      <path-element>C:\Users\Acer\Documents\GitHub\swolf\lib\starling.swc</path-element>
+      <path-element>C:\Users\Acer\Documents\GitHub\swolf\lib\starlingparticleex.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>D:\projekty\Starling\swolf\src\pl\poklik\test\swolf\StarlingStartup.as</path-element>
+    <path-element>C:\Users\Acer\Documents\GitHub\swolf\src\pl\poklik\test\swolf\StarlingStartup.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>
